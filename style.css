@@ -1,6 +1,19 @@
-body, #title {
+body {
+    background: repeating-linear-gradient(45deg, #008000, #008000 20px, #33cc33 20px, #33cc33 40px);
+    position: cover;
     display: block;
     text-align: center;
     justify-content: center;
     align-items: center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+}
+
+h1 {
+    margin: 100px auto;
+    font-weight: 900;
+}
+
+button {
+    margin: 0 20px;
 }

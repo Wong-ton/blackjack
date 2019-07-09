@@ -1,8 +1,8 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
     <link rel="stylesheet" href="style.css">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
@@ -11,9 +11,9 @@
 <body>
     
     <div id="title"><h1>B L A C K J A C K</h1>
-        <p><button id="play-button">PLAY</button></p>
-        <br><button id="hit-button">HIT</button>
-        <button id="stay-button">STAY</button>
+        <p><button class="btn btn-dark btn-lg" id="play-button">PLAY</button></p>
+        <br><button class="btn btn-warning btn-lg" id="hit-button">HIT</button>
+        <button class="btn btn-danger btn-lg" id="stay-button">STAY</button>
     </div>
 
     <div id="players">
@@ -21,9 +21,13 @@
     </div>
 
     <div id="deck">
-        
-    </div>
 
+    </div>
+    
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
     <script src = "js/app.js"></script>
+  </body>
 </body>
 </html>
