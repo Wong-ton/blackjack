@@ -10,7 +10,9 @@ body {
 }
 
 h1 {
-    margin: 100px auto;
+    margin: 50px auto;
+    font-family: 'Monofett', cursive;
+    font-size: 90px;
     font-weight: 900;
 
 }
@@ -19,8 +21,13 @@ button {
     margin: 0 20px;
 }
 
-.players {
+#hit-button, #stand-button {
     visibility: hidden;
+}
+
+.player, .dealer {
+    /* visibility: hidden; */
+    margin: 50px auto;
 }
 
 .dealerWins, .playerWins {

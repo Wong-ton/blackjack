@@ -2,26 +2,29 @@
 <html lang="en">
 <head>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <link href="https://fonts.googleapis.com/css?family=Monofett&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="css/cardstarter.css">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Blackjack</title>
 </head>
 <body>
-    
-    <div id="title"><h1>B L A C K J A C K</h1>
-        <p><button class="btn btn-dark btn-lg" id="play-button">PLAY</button></p>
-        <br><button class="btn btn-warning btn-lg" id="hit-button">HIT</button>
-        <button class="btn btn-danger btn-lg" id="stay-button">STAY</button>
+    <div class="dealer">Dealer
+        <div id="dealerHand"></div>
+        <div id="dealerSum"></div>
     </div>
 
-    <div class="players">
-        <div id="dealer">Dealer</div>
-        <div id="dealerCards"></div>
-        <div id="player">Player</div>
-        <div id="playerCards"></div>
-        <div id="dealerSum"></div>
+    <div id="title"><h1>B L A C K J A C K</h1>
+        <p><button class="btn btn-dark btn-lg" id="deal-button">DEAL</button></p>
+        <br><button class="btn btn-warning btn-lg" id="hit-button">HIT</button>
+        <button class="btn btn-danger btn-lg" id="stand-button">STAND</button>
+    </div>
+
+
+    <div class="player">Player
+        <div id="playerHand"></div>
         <div id="playerSum"></div>
     </div>
 
@@ -36,7 +39,8 @@
         <h4>Player Wins</h4>
         <div id="playerWins"></div>
     </div>
-    
+ 
+
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
