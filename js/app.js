@@ -49,6 +49,7 @@ function shuffle(deck) {
   }
 
 function renderHand() {
+    $('#playerHand').empty();
     for (let i = 0; i < playerHand.length; i++) {
         const suit = playerHand[i].suit
         const value = isNaN(playerHand[i].value) ? playerHand[i].value : playerHand[i].value === "10" ? "r" + playerHand[i].value : "r0" + playerHand[i].value
@@ -56,6 +57,7 @@ function renderHand() {
         $card.addClass(`card ${suit} ${value}`);
         $card.appendTo('#playerHand');
     }
+    $('#dealerHand').empty();
     for (let i = 0; i < dealerHand.length; i++) {
         const suit = dealerHand[i].suit
         const value = isNaN(dealerHand[i].value) ? dealerHand[i].value : dealerHand[i].value === "10" ? "r" + dealerHand[i].value : "r0" + dealerHand[i].value
@@ -128,10 +130,10 @@ function checkWinner() {
 function checkBust() {
      if (playerSum > 21) {
         dWin();
-        console.log('You busted! You LOSE!')
+        $('#message').text('Busted! You LOSE!')
     } else if (dealerSum > 21) {
         pWin();
-        return console.log('Dealer busted! You WIN!');
+        $('#message').text('Dealer busted! You WIN!');
     } 
 }
 
@@ -149,10 +151,12 @@ function check21() {
 
 function pWin() {
     pNumOfWins += 1;
+    $('#playerWins').text('Player Wins: ', pNumOfWins);
 }
 
 function dWin() {
     dNumOfWins += 1;
+    $('#dealerWins').text('Dealer Wins :', dNumOfWins);
 }
 
 // Add next card to the player/dealer's hand, calculate score, and check if there's a winner.
@@ -160,6 +164,7 @@ function hit(hand) {
     let nextCard = deck.pop();
     hand.push(nextCard);
     getScore(hand);
+    renderHand();
     updateScores();
     checkBust();
     console.log(nextCard, 'Score : ', getScore(hand));
@@ -194,9 +199,12 @@ $('#deal-button').on('click', () => {
     console.log(deck);
     console.log('Player Hand', playerHand, 'Points : ', playerSum);
     console.log('Dealer Hand', dealerHand, 'Points : ', dealerSum);
+    $('#title').css({'visibility':'hidden'});
     $('#deal-button').css({'visibility':'hidden'});
     $('#hit-button').css({'visibility':'visible'});
     $('#stand-button').css({'visibility':'visible'});
+    $('#playerSum').text(`Player's points: ${playerSum}`)
+    $('#dealerSum').text(`Dealer's points: ${dealerSum}`)
 })
 
 $('#hit-button').on('click', function() {

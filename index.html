@@ -2,44 +2,30 @@
 <html lang="en">
 <head>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
-    <link href="https://fonts.googleapis.com/css?family=Monofett&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Bungee+Inline|Russo+One&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="css/cardstarter.css">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Blackjack</title>
+    <title>Blackjack Game by Wong-ton</title>
 </head>
 <body>
-    <div class="dealer">Dealer
+    <div class="dealer">
         <div id="dealerHand"></div>
-        <div id="dealerSum"></div>
+        <div id="dealerSum"></div><div id="dealerWins"></div>
     </div>
 
-    <div id="title"><h1>B L A C K J A C K</h1>
-        <p><button class="btn btn-dark btn-lg" id="deal-button">DEAL</button></p>
-        <br><button class="btn btn-warning btn-lg" id="hit-button">HIT</button>
-        <button class="btn btn-danger btn-lg" id="stand-button">STAND</button>
-    </div>
+    <div id="title"><h1>B L A C K J A C K</h1>INSTRUCTIONS HERE</div>
+    <div id="message"></div>
+        <button class="btn btn-warning btn-lg" id="hit-button">H I T</button>
+        <button class="btn btn-dark btn-lg" id="deal-button">D E A L</button>
+        <button class="btn btn-danger btn-lg" id="stand-button">S T A N D</button>
 
-
-    <div class="player">Player
+    <div class="player">
+        <div id="playerSum"></div><div id="playerWins"></div>
         <div id="playerHand"></div>
-        <div id="playerSum"></div>
     </div>
-
-    <div id="deck">
-    </div>
-
-    <div class="dealerWins">
-        <h4>Dealer Wins</h4>
-        <div id="dealerWins"></div>
-    </div>
-    <div class="playerWins">
-        <h4>Player Wins</h4>
-        <div id="playerWins"></div>
-    </div>
- 
 
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>

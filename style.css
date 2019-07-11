@@ -10,8 +10,8 @@ body {
 }
 
 h1 {
-    margin: 50px auto;
-    font-family: 'Monofett', cursive;
+    margin: 0 auto;
+    font-family: 'Bungee Inline', cursive;
     font-size: 90px;
     font-weight: 900;
 
@@ -19,6 +19,7 @@ h1 {
 
 button {
     margin: 0 20px;
+    width: 10em;
 }
 
 #hit-button, #stand-button {
@@ -27,9 +28,18 @@ button {
 
 .player, .dealer {
     /* visibility: hidden; */
-    margin: 50px auto;
+    font-family: 'Russo One', sans-serif;
+    font-size: 20px;
+    margin: 20px auto;
 }
 
-.dealerWins, .playerWins {
-    visibility: hidden;
+#dealerWins, #dealerSum, #playerWins, #playerSum {
+    border: 2px solid black;
+    display: flex;
+    justify-content: space-around;
+}
+
+#message {
+    font-family: 'Russo One', sans-serif;
+    font-size: 40px;
 }
