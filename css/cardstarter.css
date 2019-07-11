@@ -11,8 +11,8 @@
   height: 8.25em;
   /* Add a default background color and border. */
   background-color: #fff;
-  border-radius: 0.20em;
-  border: 1px solid #c3c3c3;
+  border-radius: 0.5em;
+  border: 1.5px solid #c3c3c3;
   /* Scale and set the background settings. */
   background-repeat: no-repeat;
   background-position: center center;

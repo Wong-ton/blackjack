@@ -65,10 +65,10 @@ function renderHand() {
         $card.addClass(`card ${suit} ${value}`);
         $card.appendTo('#dealerHand');
     }
+    hideCard();
 }
 
 function deal() {
-    
     let pCard1 = deck.pop();
     playerHand.push(pCard1);
     let dCard1 = deck.pop();
@@ -78,11 +78,23 @@ function deal() {
     let dCard2 = deck.pop();
     dealerHand.push(dCard2);
     renderHand();
+    hideCard();
     getScore(playerHand);
     getScore(dealerHand);
     updateScores();
     check21();
     // Update points & Check sum for winner (maybe 2 functions)
+}
+
+function hideCard() {
+    // $($('#dealerHand').children()[0]).attr('class', 'card back-blue')
+    const $card = $($('#dealerHand').children()[0])
+    $($('#dealerHand').children()[0]).css('background-image', 'url(images/backs/blue.svg)');
+}
+
+function revealCard() {
+    $($('#dealerHand').children()[0]).attr('class', 'card back-blue')
+    $card 
 }
 
 
@@ -115,48 +127,59 @@ function checkWinner() {
             updateScores();
         }
     }
-    if (playerSum === dealerSum) {
-        return console.log('You and the dealer have the same score, so it\'s a PUSH.');
-    }
-    else if (playerSum > dealerSum && playerSum < 22) {
-        pWin();
-        return console.log('Your hand beats the dealer\'s. You WIN!');
-    } else if (playerSum < dealerSum && dealerSum < 22) {
-        dWin();
-        return console.log('Dealer\'s hand beats yours. You LOSE!');
-    }
-}
-
-function checkBust() {
-     if (playerSum > 21) {
+    if (playerSum > 21) {
         dWin();
         $('#message').text('Busted! You LOSE!')
     } else if (dealerSum > 21) {
         pWin();
         $('#message').text('Dealer busted! You WIN!');
-    } 
-}
+    }
+    if (playerSum === dealerSum) {
+        $('#message').text('You and the dealer have the same score, so it\'s a PUSH.');
+        reset();
+    }
+    else if (playerSum > dealerSum && playerSum < 22) {
+        pWin();
+        $('#message').text('Your hand beats the dealer\'s. You WIN!');
+    } else if (playerSum < dealerSum && dealerSum < 22) {
+        dWin();
+        $('#message').text('Dealer\'s hand beats yours. You LOSE!');
+    }
+} 
+
+// function checkBust() {
+//     if (playerSum > 21) {
+//         dWin();
+//         $('#message').text('Busted! You LOSE!')
+//     } else if (dealerSum > 21) {
+//         pWin();
+//         $('#message').text('Dealer busted! You WIN!');
+//     }
+// }
 
 function check21() {
     if (playerSum === 21 && playerSum > dealerSum) {
         pWin();
-        console.log('BLACKJACK! You WIN!');
+        $('#message').text('BLACKJACK! You WIN!');
     } else if (dealerSum === 21 && dealerSum > playerSum) {
         dWin();
-        console.log('BLACKJACK! You LOSE!');
+        $('#message').text('BLACKJACK! You LOSE!');
     } else if (playerSum && dealerSum === 21) {
-        console.log('Wow, double blackjack. PUSH!');
+        $('#message').text('Wow, double blackjack. PUSH!');
+        reset();
     }
 }
 
 function pWin() {
     pNumOfWins += 1;
-    $('#playerWins').text('Player Wins: ', pNumOfWins);
+    reset();
+    $('#playerWins').text('Player Wins : ', pNumOfWins);
 }
 
 function dWin() {
     dNumOfWins += 1;
-    $('#dealerWins').text('Dealer Wins :', dNumOfWins);
+    reset();
+    $('#dealerWins').text('Dealer Wins : ', dNumOfWins);
 }
 
 // Add next card to the player/dealer's hand, calculate score, and check if there's a winner.
@@ -166,7 +189,7 @@ function hit(hand) {
     getScore(hand);
     renderHand();
     updateScores();
-    checkBust();
+    checkWinner();
     console.log(nextCard, 'Score : ', getScore(hand));
     // Update points & Check sum for winner (maybe 2 functions)
 }
@@ -179,13 +202,16 @@ function stand() {
 }
 
 function reset() {
-    let deck = [];
-    let playerHand = [];
-    let dealerHand = [];
-    let playerSum = 0;
-    let dealerSum = 0;
+    deck = [];
+    playerHand = [];
+    dealerHand = [];
+    playerSum = 0;
+    dealerSum = 0;
     turnOver = false;
     hasAce = false;
+    $('#deal-button').css({'visibility':'visible'});
+    $('#hit-button').css({'visibility':'hidden'});
+    $('#stand-button').css({'visibility':'hidden'});
 }
 
 
@@ -199,18 +225,25 @@ $('#deal-button').on('click', () => {
     console.log(deck);
     console.log('Player Hand', playerHand, 'Points : ', playerSum);
     console.log('Dealer Hand', dealerHand, 'Points : ', dealerSum);
-    $('#title').css({'visibility':'hidden'});
+    $('#title').hide();
     $('#deal-button').css({'visibility':'hidden'});
+    $('#message').css({'visibility':'hidden'});
     $('#hit-button').css({'visibility':'visible'});
     $('#stand-button').css({'visibility':'visible'});
-    $('#playerSum').text(`Player's points: ${playerSum}`)
-    $('#dealerSum').text(`Dealer's points: ${dealerSum}`)
+    $('.player').css({'visibility':'visible'});
+    $('.dealer').css({'visibility':'visible'});
+    $('#playerSum').text(`Player's points: ${playerSum}`);
+    $('#dealerSum').text(`Dealer's points: ${dealerSum}`);
 })
 
 $('#hit-button').on('click', function() {
     hit(playerHand);
+    $('#playerSum').text(`Player's points: ${playerSum}`);
+    $('#message').css({'visibility':'visible'});
 })
 
 $('#stand-button').on('click', function() {
     stand();
+    $('#message').css({'visibility':'visible'});
+    $('#dealerSum').text(`Dealer's points: ${dealerSum}`);
 })

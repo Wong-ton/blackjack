@@ -14,10 +14,10 @@ h1 {
     font-family: 'Bungee Inline', cursive;
     font-size: 90px;
     font-weight: 900;
-
 }
 
 button {
+    font-family: 'Russo One', sans-serif;
     margin: 0 20px;
     width: 10em;
 }
@@ -27,19 +27,19 @@ button {
 }
 
 .player, .dealer {
-    /* visibility: hidden; */
+    visibility: hidden;
     font-family: 'Russo One', sans-serif;
     font-size: 20px;
     margin: 20px auto;
 }
 
 #dealerWins, #dealerSum, #playerWins, #playerSum {
-    border: 2px solid black;
+    border: 1px solid black;
     display: flex;
-    justify-content: space-around;
+    justify-content: space-evenly;
 }
 
 #message {
     font-family: 'Russo One', sans-serif;
-    font-size: 40px;
+    font-size: 2em;
 }
