@@ -1,5 +1,4 @@
-### BLACKJACK
-The ever popular casino game created by Jason Wong.
+# BLACKJACK
 
 ### GAME LINK
 https://wong-ton.github.io/blackjack/
