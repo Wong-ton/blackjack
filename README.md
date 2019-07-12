@@ -29,8 +29,8 @@ The objective is to get a hand total as close to 21 as possible without going ov
 5. Bootstrap
 6. Google Fonts
 
-### Authors
+### AUTHOR
 Jason Wong
 
-### ACKNOWLEDGMENTS
+### ACKNOWLEDGEMENTS
 Fisher-Yates Shuffle by Mike Bostock (https://bost.ocks.org/mike/shuffle/)
