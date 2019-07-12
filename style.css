@@ -40,6 +40,7 @@ button {
 }
 
 #message {
+    visibility: hidden;
     font-family: 'Russo One', sans-serif;
     font-size: 2em;
 }

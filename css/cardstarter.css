@@ -313,9 +313,12 @@
 .card.back {
   background-image: url("../images/backs/blue.svg"); }
 
-.card.back-blue {
-  background-image: url("../images/backs/blue.svg"); }
-
+  .card.back-blue {
+    background-image: url("../images/backs/blue.svg"); }
+  
+  #card-back {
+    background-image: url("../images/backs/blue.svg"); }
+  
 .card.back-red {
   background-image: url("../images/backs/red.svg"); }
 
