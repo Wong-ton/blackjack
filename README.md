@@ -1,5 +1,7 @@
-### BLACKJACK
-The ever popular casino game created by Jason Wong.
+# BLACKJACK
+
+### GAME LINK
+https://wong-ton.github.io/blackjack/
 
 ### OBJECTIVE
 The objective is to get a hand total as close to 21 as possible without going over 21 versus the dealer. At the start of a Blackjack game, the player and the dealer receive two cards each.
