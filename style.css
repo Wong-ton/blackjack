@@ -1,5 +1,6 @@
 body {
-    background: repeating-linear-gradient(45deg, #008000, #008000 20px, #33cc33 20px, #33cc33 40px);
+    /* background: repeating-linear-gradient(45deg, #008000, #008000 20px, #33cc33 20px, #33cc33 40px); */
+    background-image: url("http://cheerspokernh.com/wp-content/uploads/2018/02/bigstock-poker-table-background-26587844-2-1.jpg");
     position: cover;
     display: block;
     text-align: center;

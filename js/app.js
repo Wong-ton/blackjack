@@ -21,15 +21,14 @@ function createDeck() {
             if (cardValue[x] === "A")
                 points = 11;
             
-                deck.push({value: cardValue[x], suit: suits[i], points: points})
+            deck.push({value: cardValue[x], suit: suits[i], points: points})
         }
     }
-    return deck;
  }
 
 // Fisher-Yates shuffle function, which selects a random card from the front and places it in the back,
 // the back unshuffled card is moved to the front, where it waits to be shuffled. The cycle repeats until
-// all of the cards are shuffled. LINK TO EXPLANATION: https://bost.ocks.org/mike/shuffle/
+// all of the cards are shuffled. LINK TO SOURCE: https://bost.ocks.org/mike/shuffle/
 function shuffle(deck) {
     let m = deck.length;
     let t;
@@ -48,7 +47,7 @@ function shuffle(deck) {
 
 // Render card images for respective hands, afterwards, hide a dealer card.
 function renderHand() {
-    $('#playerHand').empty();
+    $('#playerHand').empty();   
     for (let i = 0; i < playerHand.length; i++) {
         const suit = playerHand[i].suit
         const value = isNaN(playerHand[i].value) ? playerHand[i].value : playerHand[i].value === "10" ? "r" + playerHand[i].value : "r0" + playerHand[i].value
@@ -68,20 +67,17 @@ function renderHand() {
 }
 
 function deal() {
-    let pCard1 = deck.pop();
-    playerHand.push(pCard1);
-    let dCard1 = deck.pop();
-    dealerHand.push(dCard1);
-    let pCard2 = deck.pop();
-    playerHand.push(pCard2);
-    let dCard2 = deck.pop();
-    dealerHand.push(dCard2);
+    playerHand.push(deck.pop());
+    dealerHand.push(deck.pop());
+    playerHand.push(deck.pop());
+    dealerHand.push(deck.pop());
     renderHand();
     getScore(dealerHand);
     getScore(playerHand);
-    updateScores();   
+    updateScores(); 
 }
 
+// hideCard function gives card image an ID of card-back so it can override the face up card image since ID takes precedence over class
 function hideCard() {
     $($('#dealerHand').children()[0]).attr('id', 'card-back')
 }
@@ -90,7 +86,7 @@ function revealCard() {
     $($('#dealerHand').children()[0]).attr('id', '')
 }
 
-// Calculates the score of the player/dealer hands and adjusts ACE value depending on of it's over 21 or not.
+// Calculates the score of the player/dealer hands and adjusts Ace value depending on of it's over 21 or not.
 function getScore(hand) {
     hasAce = false;
     let score = 0;
@@ -120,8 +116,8 @@ function checkWinner() {
         }
     }
     if (dealerSum === 21 && dealerSum > playerSum) {
-        $('#message').text('BLACKJACK! You LOSE!');
-        return dWin();
+        dWin();
+        return $('#message').text('BLACKJACK! You LOSE!');
     } else if (playerSum === dealerSum) {
         $('#message').css({'visibility':'visible'});
         $('#message').text(`You and the dealer have the same score ${playerSum}, it\'s a PUSH.`);
@@ -159,7 +155,7 @@ function check21() {
 function pWin() {
     pNumOfWins += 1;
     revealCard();
-    $('#dealerSum').text(`DEALER'S points: ${dealerSum}`);
+    $('#dealerSum').text(`DEALER'S points : ${dealerSum}`);
     $('#playerWins').text('Wins : ' + pNumOfWins);
     $('#deal-button').css({'visibility':'visible'});
     $('#hit-button').css({'visibility':'hidden'});
@@ -170,7 +166,7 @@ function pWin() {
 function dWin() {
     dNumOfWins += 1;
     revealCard();
-    $('#dealerSum').text(`DEALER'S points: ${dealerSum}`);
+    $('#dealerSum').text(`DEALER'S points : ${dealerSum}`);
     $('#dealerWins').text('Wins : ' + dNumOfWins);
     $('#deal-button').css({'visibility':'visible'});
     $('#hit-button').css({'visibility':'hidden'});
@@ -191,9 +187,9 @@ function hit(hand) {
 // End player turn; call checkWinner function which adds cards dealer hand if it's less than 17
 function stand() {
     turnOver = true;
-    check21();
-    checkBust();
     checkWinner();
+    checkBust();
+    check21();
 }
 
 function reset() {
