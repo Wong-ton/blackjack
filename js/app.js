@@ -45,7 +45,8 @@ function shuffle(deck) {
     return deck;
   }
 
-// Render card images for respective hands, afterwards, hide a dealer card.
+// Render card images for respective hands, afterwards, hide a dealer card. 
+// Div is created so that the card's suit & value can be added as a class so that cards can be rendered because default card value has "r" in front of 10 point cards.
 function renderHand() {
     $('#playerHand').empty();   
     for (let i = 0; i < playerHand.length; i++) {
@@ -106,7 +107,11 @@ function updateScores() {
     dealerSum = getScore(dealerHand);
     playerSum = getScore(playerHand);
     $('#playerSum').text(`PLAYER'S points : ${playerSum}`);
-    $('#dealerSum').text(`DEALER'S points : ${dealerHand[1].points}`);
+    if (turnOver === false) {
+        $('#dealerSum').text(`DEALER'S points : ${dealerHand[1].points}`);
+    } else if (turnOver) {
+        $('#dealerSum').text(`DEALER'S points : ${dealerSum}`);
+    }
 }
 
 function checkWinner() {
@@ -118,26 +123,26 @@ function checkWinner() {
     if (dealerSum === 21 && dealerSum > playerSum) {
         dWin();
         return $('#message').text('BLACKJACK! You LOSE!');
-    } else if (playerSum === dealerSum) {
-        $('#message').css({'visibility':'visible'});
-        $('#message').text(`You and the dealer have the same score ${playerSum}, it\'s a PUSH.`);
-        return reset();
     } else if (playerSum > dealerSum && playerSum < 22) {
         pWin();
         return $('#message').text(`Your hand (${playerSum}) beats the dealer\'s (${dealerSum}). You WIN!`);
     } else if (playerSum < dealerSum && dealerSum < 22) {
         dWin();
         return $('#message').text(`Dealer\'s hand (${dealerSum}) beats yours (${playerSum}). You LOSE!`);
+    } else if (playerSum === dealerSum) {
+        $('#message').css({'visibility':'visible'})
+        $('#message').text(`It\'s a PUSH! You and dealer have the same score of (${playerSum})`);
+        return tie();
     }
 } 
 
 function checkBust() {
     if (playerSum > 21) {
         dWin();
-        return $('#message').text(`Busted with ${playerSum}! You LOSE!`)
+        return $('#message').text(`Busted with (${playerSum})! You LOSE!`)
     } else if (dealerSum > 21) {
         pWin();
-        return $('#message').text(`Dealer busted with ${dealerSum}! You WIN!`);
+        return $('#message').text(`Dealer busted with (${dealerSum})! You WIN!`);
     }
 }
 
@@ -148,7 +153,7 @@ function check21() {
     } else if (playerSum === 21 && dealerSum === 21) {
         $('#message').css({'visibility':'visible'});
         $('#message').text('Wow, double blackjack. PUSH!');
-        return reset();
+        return tie();
     }
 }
 
@@ -174,10 +179,18 @@ function dWin() {
     $('#message').css({'visibility':'visible'});
 }
 
+function tie() {
+    revealCard();
+    $('#dealerSum').text(`DEALER'S points : ${dealerSum}`);
+    $('#deal-button').css({'visibility':'visible'});
+    $('#hit-button').css({'visibility':'hidden'});
+    $('#stand-button').css({'visibility':'hidden'});
+    $('#message').css({'visibility':'visible'});
+}
+
 // Add next card to the player/dealer's hand, calculate score, and check if hand is over 21
 function hit(hand) {
-    let nextCard = deck.pop();
-    hand.push(nextCard);
+    hand.push(deck.pop());
     getScore(hand);
     updateScores();
     renderHand();

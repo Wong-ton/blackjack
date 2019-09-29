@@ -1,5 +1,4 @@
 body {
-    /* background: repeating-linear-gradient(45deg, #008000, #008000 20px, #33cc33 20px, #33cc33 40px); */
     background-image: url("http://cheerspokernh.com/wp-content/uploads/2018/02/bigstock-poker-table-background-26587844-2-1.jpg");
     position: cover;
     display: block;
@@ -8,30 +7,32 @@ body {
     align-items: center;
     background-repeat: no-repeat;
     background-attachment: fixed;
+    margin: 0;
 }
 
 h1 {
-    margin: 0 0 100px auto;
-    font-family: 'Monofett', cursive;
+    color: black;
+    margin: 0 auto;
+    font-family: 'Bungee Shade', cursive;
     font-size: 7em;
-    font-weight: 900;
+    /* font-weight:0; */
 }
 
-@media only screen and (max-width: 450px){
-    h1{
-        font-size: font-size 6.5em
-    }
-
-    .card{
-        width: 4em;
-        height: 5.25em;
-    }
-}
-
-button {
+button.btn {
     font-family: 'Russo One', sans-serif;
     margin: 0 20px;
     width: 9em;
+    border-radius: 2em;
+    box-shadow: 0 8px #999;
+}
+
+button.btn:active {
+    box-shadow: 0 8px #666;
+    transform: translateY(4px);
+}
+
+button.btn:active:after {
+    box-shadow: 0 8px #999;
 }
 
 #hit-button, #stand-button {
@@ -41,13 +42,17 @@ button {
 .player, .dealer {
     visibility: hidden;
     font-family: 'Russo One', sans-serif;
-    font-size: 20px;
+    font-size: 1.5em;
     margin: 20px auto;
+}
+
+#dealerHand > div:hover, #playerHand > div:hover {
+    cursor: default;
 }
 
 #dealerWins, #dealerSum, #playerWins, #playerSum {
     color: white;
-    opacity: 0.8;
+    opacity: 0.7;
     background-color: black;
     border: 1px solid black;
     display: flex;
@@ -57,6 +62,34 @@ button {
 #message {
     visibility: hidden;
     font-family: 'Russo One', sans-serif;
-    font-weight: 900;
     font-size: 2em;
+    color: white;
+    height: 50px;
+}
+
+
+/* MOBILE OPTIMIZATION */
+@media screen and (max-width: 450px){
+    h1 {
+        font-size: 3em;
+        text-align: center;
+        margin: 100px auto;
+    }
+
+    #message, .player, .dealer {
+        font-size: 1.15em;
+    }
+
+    /* Targets the children (cards) of dealer & player hands. Since each card has a specific class, this will target them dynamically */
+    #dealerHand > div, #playerHand > div {
+        width: 4em;
+        height: 5.5em;
+        border: 1px solid #c3c3c3;
+        border-radius: 0.25em;
+    }
+
+    button.btn {
+        width: 5em;
+        margin: 10px 0;
+    }
 }
