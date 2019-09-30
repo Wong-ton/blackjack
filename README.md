@@ -14,7 +14,7 @@ The objective is to get a hand total as close to 21 as possible without going ov
 - The higher total is the winner. If score is the same, then it's a TIE or PUSH.
 - If you get a BLACKJACK or 21 in your opening hand, you will still need to click "STAND" to check the dealer's hand as it might be a tie.
 
-![](/images/wireframe.png)
+![](/images/wireframe1.png)
 
 ### FUTURE UPDATES
 - More than 1 deck
