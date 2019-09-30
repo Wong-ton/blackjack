@@ -14,7 +14,6 @@ The objective is to get a hand total as close to 21 as possible without going ov
 - The higher total is the winner. If score is the same, then it's a TIE or PUSH.
 - If you get a BLACKJACK or 21 in your opening hand, you will still need to click "STAND" to check the dealer's hand as it might be a tie.
 
-
 ![](/images/wireframe.png)
 
 ### FUTURE UPDATES
@@ -34,5 +33,5 @@ The objective is to get a hand total as close to 21 as possible without going ov
 ### AUTHOR
 Jason Wong
 
-### ACKNOWLEDGEMENTS
+### CONTRIBUTIONS
 Fisher-Yates Shuffle by Mike Bostock (https://bost.ocks.org/mike/shuffle/)

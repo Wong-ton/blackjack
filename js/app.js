@@ -16,7 +16,7 @@ function createDeck() {
         for (let x = 0; x < cardValue.length; x++) {
             
             let points = parseInt(cardValue[x]);
-            if (cardValue[x] === "J" || cardValue[x] === "Q" || cardValue[x] === "K")
+            if (cardValue[x] === "J" ||  cardValue[x] === "Q" || cardValue[x] === "K")
                 points = 10;
             if (cardValue[x] === "A")
                 points = 11;
@@ -200,9 +200,9 @@ function hit(hand) {
 // End player turn; call checkWinner function which adds cards dealer hand if it's less than 17
 function stand() {
     turnOver = true;
+    check21();
     checkWinner();
     checkBust();
-    check21();
 }
 
 function reset() {
