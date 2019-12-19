@@ -92,3 +92,43 @@ button.btn:active:after {
         margin: 10px 0;
     }
 }
+
+/* Larger Desktops */
+@media screen and (min-width: 1920px){
+    body {
+        font-size: 1.5rem;
+        text-align: center;
+        margin: 75px 0 0 0;
+    }
+
+    #message {
+        margin: 50px 0px;
+    }
+
+    button.btn {
+        margin: 25px 0;
+    }
+}
+
+/* Larger Desktops 4K+ */
+@media screen and (min-width: 4000px){
+    body {
+        font-size: 3.5rem;
+        text-align: center;
+        margin: 75px 0 0 0;
+    }
+
+    #message {
+        margin: 0 0 150px 0px;
+    }
+
+    button.btn {
+        font-size: 1em;
+        width: 10em;
+        margin: 50px;
+    }
+
+    #playerHand {
+        margin: 50px 0 0 0;
+    }
+}
