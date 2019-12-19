@@ -1,6 +1,6 @@
 body {
     background-image: url("http://cheerspokernh.com/wp-content/uploads/2018/02/bigstock-poker-table-background-26587844-2-1.jpg");
-    position: cover;
+    background-size: cover;
     display: block;
     text-align: center;
     justify-content: center;
